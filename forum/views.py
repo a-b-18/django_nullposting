@@ -1,8 +1,30 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+posts = [
+    {
+        'user_name': 'AlexBZ',
+        'title': 'Fourm Post #1',
+        'content': 'First conent in the forum.',
+        'date_posted': 'August 31, 2018'
+    },
+    {
+        'user_name': 'ADeBZ',
+        'title': 'Fourm Post #2',
+        'content': 'Serst content in the forum.',
+        'date_posted': 'August 31, 2018'
+    },
+
+]
 
 def home(request):
-    return HttpResponse('<h1>Forum Please</h1>')
+    context = {
+        'title' : 'Home',
+        'posts': posts
+    }
+    return render(request, 'forum/home.html', context)
 
 def about(request):
-    return HttpResponse('<h1>About Please</h1>')
+    context = {
+        'title' : 'About'
+    }
+    return render(request, 'forum/about.html', context)
